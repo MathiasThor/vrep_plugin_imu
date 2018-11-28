@@ -32,12 +32,12 @@ bool ROS_server::initialize()
 {
   int argc = 0;
   char** argv = NULL;
-  ros::init(argc,argv,"vrep");
+  ros::init(argc,argv,"morf_sim");
 
   if(!ros::master::check())
     return(false);
 	
-  node=new ros::NodeHandle("~");
+  node=new ros::NodeHandle("morf_sim");
 
   // Enable the services:
   displayText_server = node->advertiseService("displayText",ROS_server::displayText_service);
@@ -46,7 +46,7 @@ bool ROS_server::initialize()
   imu_publisher= node->advertise<sensor_msgs::Imu>("imu",10);
 
   // Enable the subscribers:
-  addStatusBarMessage_subscriber=node->subscribe("addStatusbarMessage",1,&ROS_server::addStatusbarMessage_callback);
+  //addStatusBarMessage_subscriber=node->subscribe("addStatusbarMessage",1,&ROS_server::addStatusbarMessage_callback);
 
   return(true);
 }
@@ -54,7 +54,7 @@ bool ROS_server::initialize()
 void ROS_server::shutDown()
 {
   // Disable the subscribers:
-  addStatusBarMessage_subscriber.shutdown();
+  //addStatusBarMessage_subscriber.shutdown();
 
   // Disable the publishers:
   imu_publisher.shutdown();

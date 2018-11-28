@@ -14,6 +14,7 @@ include_directories(include ${catkin_INCLUDE_DIRS})
 link_directories("/opt/ros/groovy/lib")
 link_directories("/opt/ros/indigo/lib")
 link_directories("/opt/ros/hydro/lib")
+link_directories("/opt/ros/melodic/lib")
 
 add_library(v_repExtImu src/vrep_plugin_imu.cpp src/v_repLib.cpp src/ros_server_imu.cpp)
 
